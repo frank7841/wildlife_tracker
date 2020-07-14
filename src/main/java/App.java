@@ -51,7 +51,13 @@ public class App {
             model.put("sightings",Sightings.all());
             return new ModelAndView(model, "animal-form.hbs");
         }, new HandlebarsTemplateEngine());
-
+//show new endangered animal form
+        get("/posts/endangered-animals/new",(req, res) ->{
+            Map<String, Object> model = new HashMap<>();
+            model.put("animals",EndangeredAnimal.all());
+            model.put("sightings",Sightings.all());
+            return new ModelAndView(model, "endangered-animal-form.hbs");
+        }, new HandlebarsTemplateEngine());
 
     }
 
