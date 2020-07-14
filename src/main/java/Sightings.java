@@ -43,6 +43,15 @@ public class Sightings {
                     .getKey();
         }
     }
+    public static Sightings find(int id) {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM sightings where id=:id";
+            Sightings sighting = con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeAndFetchFirst(Sightings.class);
+            return sighting;
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
