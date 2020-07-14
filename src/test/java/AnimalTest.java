@@ -5,13 +5,15 @@ import static org.junit.Assert.assertEquals;
 
 public class AnimalTest {
     @Test
-    public void animals_instanciatesCorrectly_true(){
-        Animal testAnimal=new Animal("pantha");
-        assertEquals(true,testAnimal instanceof Animal);
+    public void animals_instanciatesCorrectly_true() {
+        Animal testAnimal = new Animal("pantha");
+        assertEquals(true, testAnimal instanceof Animal);
     }
-    @Test
-    public void animals_instanciatesWithName_true(){
-        Animal testAnimal=new Animal("pantha");
-        assertEquals("pantha",testAnimal.getName());
 
+    @Test
+    public void animals_instanciatesWithName_true() {
+        Animal testAnimal = new Animal("pantha");
+        assertEquals("pantha", testAnimal.getName());
+
+    }
 }

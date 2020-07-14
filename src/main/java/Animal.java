@@ -3,9 +3,7 @@ public class Animal {
     public String type;
     public int id;
 
-    public Animal(String name ){
-        this.name = name;
-    }
+    public Animal(String name ){ this.name = name;}
 
-
+    public String getName() {return name;}
 }
