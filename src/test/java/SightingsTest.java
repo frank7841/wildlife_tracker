@@ -14,4 +14,9 @@ public class SightingsTest  {
         Sightings testSighting=setupSighting();
         assertEquals(true,testSighting instanceof Sightings);
     }
+    @Test
+    public void Sighting_instanciatesWithLocation_true(){
+        Sightings testSighting=setupSighting();
+        assertEquals("Riverbank",testSighting.getLocation());
+    }
 }
