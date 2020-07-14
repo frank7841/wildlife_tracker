@@ -82,7 +82,17 @@ public class App {
             deleteSighting.delete();
             return new ModelAndView(model, "sightings.hbs");
         }, new HandlebarsTemplateEngine());
-
+        post("/posts/animals/new",(req, res) ->{
+            Map<String, Object> model = new HashMap<>();
+            String name = req.queryParams("name");
+            String health = req.queryParams("health");
+            String age = req.queryParams("age");
+            EndangeredAnimal animal = new EndangeredAnimal(name,health,age);
+            animal.save();
+            model.put("sightings",Sightings.all());
+            model.put("animals",EndangeredAnimal.all());
+            return new ModelAndView(model, "sighting-form.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 
 }
