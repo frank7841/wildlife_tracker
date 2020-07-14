@@ -13,6 +13,18 @@ public class App {
     public static void main(String[] args) {
         staticFileLocation("/Public");
 
+        //heroku
+        ProcessBuilder process = new ProcessBuilder();
+        Integer port;
+        if (process.environment().get("PORT") != null) {
+            port = Integer.parseInt(process.environment().get("PORT"));
+        } else {
+            port = 4567;
+        }
+
+        port(port);
+
+
         get("/", (request, response) -> {//show homw page
             Map<String, Object> model = new HashMap<>();
             List<EndangeredAnimal> animals = EndangeredAnimal.all();
@@ -99,8 +111,20 @@ public class App {
             model.put("animals",EndangeredAnimal.all());
             return new ModelAndView(model, "sighting-form.hbs");
         }, new HandlebarsTemplateEngine());
-        //process new sightings form
 
+        //get sighting by id
+        get("/sighting-details/:id",(req, res) ->{
+            Map<String, Object> model = new HashMap<>();
+            int idOfSighting=Integer.parseInt(req.params("id"));
+            Sightings foundSighting=Sightings.find(idOfSighting);
+            EndangeredAnimal enim = EndangeredAnimal.find(foundSighting.getAnimalId());
+            System.out.println(foundSighting.getRangerName());
+            model.put("sightings",foundSighting);
+            model.put("animal",enim);
+            model.put("animals",EndangeredAnimal.all());
+            return new ModelAndView(model, "sighting-details.hbs");
+        }, new HandlebarsTemplateEngine());
+        //process new sightings form
         post("/posts/sightings/new",(req, res) ->{
             Map<String, Object> model = new HashMap<>();
             String location = req.queryParams("location");

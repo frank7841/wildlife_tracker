@@ -1,12 +1,15 @@
 .text-white{
 text-align:center;
-font-family: 'Anton', sans-serif;
+font-family: "Goudy Bookletter 1911", sans-serif;
 
 }
 #site{
-font-family: 'Cinzel', serif;
+font-family: "Goudy Bookletter 1911", sans-serif;
 font-size:32px;
 }
 #bSite{
-font-family: 'Cinzel', serif;
+font-family: "Goudy Bookletter 1911", sans-serif;
+}
+ul {
+  list-style-type: none;
 }

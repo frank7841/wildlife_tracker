@@ -1,18 +1,23 @@
 {{#partial "content"}}
 
-    <form action="/posts/sightings/new" method="post" >
-        <label for="location">Location</label>
-        <input id="location" name="location" type="text" >
-        <br>
-        <label for="rangername">Ranger Name</label>
-        <input id="rangername" name="rangername" type="text" >
-        <br>
-        <label for="animalid">Select Animal:</label>
-        <select id="animalid" name="animalid">
-            {{#each animals}}
-                <option value="{{id}}">{{name}}</option>
-            {{/each}}
-        </select>
+    <!------------->
+    <form action="/posts/sightings/new" method="post">
+        <div class="form-group">
+            <label for="Location">Example label</label>
+            <input type="text" class="form-control" id="Location" placeholder="Location">
+        </div>
+        <div class="form-group">
+            <label for="rangername">Ranger Name</label>
+            <input type="text" class="form-control" id="rangername" name="rangername" placeholder="RangerName">
+        </div>
+        <div class="form-group">
+            <label for="animalid">Select Animal</label>
+            <select type="text" class="form-control" id="animalid" name="animalid">
+                {{#each animals}}
+                    <option value="{{id}}">{{name}}</option>
+                {{/each}}
+            </select>
+        </div>
         <p>Add a new animal?<a href="/posts/animals/new">Click Here</a></p>
         <button id="bSite" style="color:White"; type="submit" class="btn btn-outline-success">Sight</button>
     </form>
