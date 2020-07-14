@@ -4,7 +4,7 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class EndangeredAnimalTest  {
+public class EndangeredAnimalTest {
     public EndangeredAnimal setupEndangeredAnimal() {
         return new EndangeredAnimal("panther", "ill", "old");
     }
@@ -18,9 +18,16 @@ public class EndangeredAnimalTest  {
         assertEquals(true, testEndangeredAnimal instanceof EndangeredAnimal);
 
     }
+
     @Test
-    public void EndangeredAnimals_instanciatesWithName_true(){
-        EndangeredAnimal testEndangeredAnimal=setupEndangeredAnimal();
-        assertEquals("panther",testEndangeredAnimal.getName());
+    public void EndangeredAnimals_instanciatesWithName_true() {
+        EndangeredAnimal testEndangeredAnimal = setupEndangeredAnimal();
+        assertEquals("panther", testEndangeredAnimal.getName());
+    }
+
+    @Test
+    public void EndangeredAnimals_instanciatesWithHealth_true() {
+        EndangeredAnimal testEndangeredAnimal = setupEndangeredAnimal();
+        assertEquals("ill", testEndangeredAnimal.getHealth());
     }
 }
