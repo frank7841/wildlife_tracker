@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 
 public class EndangeredAnimalTest {
     public EndangeredAnimal setupEndangeredAnimal() {
-        return new EndangeredAnimal("panther", "ill", "old");
+        return new EndangeredAnimal("pantha", "ill", "old");
     }
 
     @Rule
@@ -23,7 +23,7 @@ public class EndangeredAnimalTest {
     @Test
     public void EndangeredAnimals_instanciatesWithName_true() {
         EndangeredAnimal testEndangeredAnimal = setupEndangeredAnimal();
-        assertEquals("panther", testEndangeredAnimal.getName());
+        assertEquals("pantha", testEndangeredAnimal.getName());
     }
 
     @Test
@@ -42,5 +42,11 @@ public class EndangeredAnimalTest {
         EndangeredAnimal testEndangeredAnimal=setupEndangeredAnimal();
         EndangeredAnimal testEndangeredAnimal1=setupEndangeredAnimal();
         assertTrue(testEndangeredAnimal.equals(testEndangeredAnimal1));
+    }
+    @Test
+    public void EndangeredAnimals_successfullyAddsAnimalToDatabase_List(){
+        EndangeredAnimal testEndangeredAnimal=setupEndangeredAnimal();
+        testEndangeredAnimal.save();
+        assertTrue(EndangeredAnimal.all().get(0).equals(testEndangeredAnimal));
     }
 }
