@@ -28,6 +28,15 @@ public class EndangeredAnimal extends Animal {
         return DATABASE_TYPE;
     }
 
+    public static List<EndangeredAnimal> all() {
+        String sql = "SELECT * FROM animals ;";
+        try(Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(EndangeredAnimal.class);
+        }
+    }
+
     public void save() {
         try (Connection con = DB.sql2o.open()) {
             String sql = "INSERT INTO animals (name, health, age, type) VALUES (:name, :health, :age, :type)";
