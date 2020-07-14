@@ -14,4 +14,5 @@ public class Sightings {
 
     public String getLocation() { return location; }
 
+    public String getRangerName() { return rangerName;}
 }
