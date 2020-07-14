@@ -13,13 +13,7 @@ public class Animal {
     public String getName() {return name;}
 
     public int getId() {return id;}
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Animal animal = (Animal) o;
-        return Objects.equals(name, animal.name);
-    }
+
     public static List<EndangeredAnimal> all() {
         String sql = "SELECT * FROM animals ";
         try(Connection con = DB.sql2o.open()) {
@@ -46,5 +40,11 @@ public class Animal {
                     .executeUpdate();
         }
     }
-
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Animal animal = (Animal) o;
+        return Objects.equals(name, animal.name);
+    }
 }

@@ -74,4 +74,11 @@ public class EndangeredAnimalTest {
         secondEndangeredAnimal.save();
         assertEquals(EndangeredAnimal.find(secondEndangeredAnimal.getId()), secondEndangeredAnimal);
     }
+    @Test
+    public void delete_deletesFireMonster_true() {
+        EndangeredAnimal testEndangeredAnimal = setupEndangeredAnimal();
+        testEndangeredAnimal.save();
+        testEndangeredAnimal.delete();
+        assertEquals(null, EndangeredAnimal.find(testEndangeredAnimal.getId()));
+    }
 }
