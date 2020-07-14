@@ -42,4 +42,11 @@ public class SightingsTest  {
         testSighting1.save();
         assertTrue(Sightings.all().get(0).equals(testSighting1));
     }
+    @Test
+    public void save_assignsIdToSighting() {
+        Sightings testSighting=setupSighting();
+        testSighting.save();
+        Sightings savedSighting = Sightings.all().get(0);
+        assertEquals(savedSighting.getId(), testSighting.getId());
+    }
 }
