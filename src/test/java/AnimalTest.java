@@ -9,5 +9,9 @@ public class AnimalTest {
         Animal testAnimal=new Animal("pantha");
         assertEquals(true,testAnimal instanceof Animal);
     }
+    @Test
+    public void animals_instanciatesWithName_true(){
+        Animal testAnimal=new Animal("pantha");
+        assertEquals("pantha",testAnimal.getName());
 
 }
