@@ -16,4 +16,5 @@ public class AnimalTest {
         assertEquals("pantha", testAnimal.getName());
 
     }
+
 }
