@@ -20,6 +20,15 @@ public class App {
             model.put("sightings",Sightings.all());
             return new ModelAndView(model, "index.hbs");
         }, new HandlebarsTemplateEngine());
+        //get all animals
+        get("/animals", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<EndangeredAnimal> animals = EndangeredAnimal.all();
+            model.put("animals",animals);
+            model.put("sightings",Sightings.all());
+            return new ModelAndView(model, "animals.hbs");
+        }, new HandlebarsTemplateEngine());
 
     }
+
 }
