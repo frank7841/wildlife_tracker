@@ -49,4 +49,13 @@ public class SightingsTest  {
         Sightings savedSighting = Sightings.all().get(0);
         assertEquals(savedSighting.getId(), testSighting.getId());
     }
+    @Test
+    public void all_returnsAllInstancesOfSighting_true() {
+        Sightings firstSighting = setupSighting();
+        firstSighting.save();
+        Sightings secondSighting = setupSighting();
+        secondSighting.save();
+        assertEquals(true, Sightings.all().get(0).equals(firstSighting));
+        assertEquals(true, Sightings.all().get(1).equals(secondSighting));
+    }
 }
