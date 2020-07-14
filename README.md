@@ -8,7 +8,10 @@ This is a Wildlife application.
 Its main purpose is record all type of animals including ranger who spotted the animal.
 The rangers can submit as many times as they want depending on how many they have sighted.
 * Rangers are able to be sorted depending on where they sighted the animal.
+##Live Link
+https://majimaji-wildlife.herokuapp.com/
 ## Setup/Installation Requirements
+
 Get to the link below and test the app. Database creation will is as below;
 **PSQL**
 * create database wildlife_tracker;
