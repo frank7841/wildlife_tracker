@@ -1,0 +1,14 @@
+{{#partial "content"}}
+
+    <h2>Add Animal</h2>
+    <div >
+        <form action="/posts/animals/new" method="post" >
+            <label for="name">Animal Name</label>
+            <input id="name" name="name" type="text" >
+            <br>
+            <button id="bSite" style="color:White"; type="submit" class="btn btn-outline-success">Submit</button>
+        </form>
+    </div>
+{{/partial}}
+
+{{> layout.hbs}}
