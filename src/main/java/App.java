@@ -11,7 +11,7 @@ import static spark.Spark.staticFileLocation;
 
 public class App {
     public static void main(String[] args) {
-        staticFileLocation("/public");
+        staticFileLocation("/Public");
 
         get("/", (request, response) -> {//show homw page
             Map<String, Object> model = new HashMap<>();
@@ -28,6 +28,7 @@ public class App {
             model.put("sightings",Sightings.all());
             return new ModelAndView(model, "animals.hbs");
         }, new HandlebarsTemplateEngine());
+
         get("/sightings", (request, response) -> {
             Map<String, Object> model = new HashMap<>();
             List<Sightings> sightings = Sightings.all();
@@ -36,6 +37,7 @@ public class App {
             return new ModelAndView(model, "sightings.hbs");
         }, new HandlebarsTemplateEngine());
         //get animal by id
+
         get("/animal-details/:id",(req, res) ->{
             Map<String, Object> model = new HashMap<>();
             int idOfEndangeredAnimal=Integer.parseInt(req.params("id"));
@@ -59,6 +61,7 @@ public class App {
             return new ModelAndView(model, "endangered-animal-form.hbs");
         }, new HandlebarsTemplateEngine());
         //show new sighting form
+
         get("/posts/sightings/new",(req, res) ->{
             Map<String, Object> model = new HashMap<>();
             model.put("sightings",Sightings.all());
@@ -66,6 +69,7 @@ public class App {
             return new ModelAndView(model, "sighting-form.hbs");
         }, new HandlebarsTemplateEngine());
         //delete animal
+
         get("/animals/:id/delete", (req, res) -> {
             Map<String, Object> model = new HashMap<>();
             int idOfAnimalToDelete = Integer.parseInt(req.params("id"));
@@ -82,6 +86,8 @@ public class App {
             deleteSighting.delete();
             return new ModelAndView(model, "sightings.hbs");
         }, new HandlebarsTemplateEngine());
+
+
         post("/posts/animals/new",(req, res) ->{
             Map<String, Object> model = new HashMap<>();
             String name = req.queryParams("name");
@@ -98,8 +104,8 @@ public class App {
         post("/posts/sightings/new",(req, res) ->{
             Map<String, Object> model = new HashMap<>();
             String location = req.queryParams("location");
-            String rangerName = req.queryParams("ranger_name");
-            int animalId = Integer.parseInt(req.queryParams("animal_id"));
+            String rangerName = req.queryParams("rangername");
+            int animalId = Integer.parseInt(req.queryParams("animalid"));
             Sightings sighting = new Sightings(animalId,location,rangerName);
             sighting.save();
             model.put("sightings",Sightings.all());

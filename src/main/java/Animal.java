@@ -45,14 +45,14 @@ public class Animal {
         List<Object> allAnimals = new ArrayList<Object>();
 
         try(Connection con = DB.sql2o.open()) {
-            String sqlSighting = "SELECT * FROM animals WHERE animal_id=:id";
+            String sqlSighting = "SELECT * FROM animals WHERE animalid=:id";
             List<Sightings> animals = con.createQuery(sqlSighting)
                     .addParameter("id", this.id)
                     .throwOnMappingFailure(false)
                     .executeAndFetch(Sightings.class);
             allAnimals.addAll(animals);
 
-            String sqlEndangeredAnimal = "SELECT * FROM animals WHERE animal_id=:id AND type='endangered';";
+            String sqlEndangeredAnimal = "SELECT * FROM animals WHERE animalid=:id AND type='endangered';";
             List<Sightings> endangeredAnimals = con.createQuery(sqlEndangeredAnimal)
                     .addParameter("id", this.id)
                     .throwOnMappingFailure(false)

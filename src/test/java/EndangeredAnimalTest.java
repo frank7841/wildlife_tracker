@@ -39,6 +39,11 @@ public class EndangeredAnimalTest {
         assertEquals("old", testEndangeredAnimal.getAge());
     }
     @Test
+    public void endangeredAnimal_instantiatesWithType_Endangered() {
+        EndangeredAnimal testEndangeredAnimal = setupEndangeredAnimal();
+        assertEquals("endangered", testEndangeredAnimal.getDatabaseType());
+    }
+    @Test
     public void EndangeredAnimals_returnIfnameIsSame_true(){
         EndangeredAnimal testEndangeredAnimal=setupEndangeredAnimal();
         EndangeredAnimal testEndangeredAnimal1=setupEndangeredAnimal();
@@ -46,10 +51,10 @@ public class EndangeredAnimalTest {
     }
     @Test
     public void EndangeredAnimals_successfullyAddsAnimalToDatabase_List(){
-        EndangeredAnimal testEndangeredAnimal=setupEndangeredAnimal();
-        testEndangeredAnimal.save();
-        assertTrue(EndangeredAnimal.all().get(0).equals(testEndangeredAnimal));
-    }
+            EndangeredAnimal testEndangeredAnimal = setupEndangeredAnimal();
+            testEndangeredAnimal.save();
+            assertTrue(EndangeredAnimal.all().get(0).equals(testEndangeredAnimal));
+        }
     @Test
     public void save_assignsIdToEndangeredAnimal() {
         EndangeredAnimal testEndangeredAnimal=setupEndangeredAnimal();
