@@ -5,7 +5,7 @@ plugins {
 
 group 'com.moringa.javaTrack'
 version '1.0-SNAPSHOT'
-mainClassName = App
+mainClassName ='App'
 
 sourceCompatibility=1.8
 
