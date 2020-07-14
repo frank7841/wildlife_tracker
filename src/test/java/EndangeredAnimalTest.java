@@ -49,4 +49,11 @@ public class EndangeredAnimalTest {
         testEndangeredAnimal.save();
         assertTrue(EndangeredAnimal.all().get(0).equals(testEndangeredAnimal));
     }
+    @Test
+    public void save_assignsIdToEndangeredAnimal() {
+        EndangeredAnimal testEndangeredAnimal=setupEndangeredAnimal();
+        testEndangeredAnimal.save();
+        EndangeredAnimal savedEndangeredAnimal = EndangeredAnimal.all().get(0);
+        assertEquals(savedEndangeredAnimal.getId(), testEndangeredAnimal.getId());
+    }
 }
