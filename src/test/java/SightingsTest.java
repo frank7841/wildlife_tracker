@@ -22,6 +22,11 @@ public class SightingsTest  {
     @Test
     public void Sighting_instanciatesRangerName_true(){
         Sightings testSighting=setupSighting();
-        assertEquals("mbaku",testSighting.getRangerName());
+        assertEquals("Mbaku",testSighting.getRangerName());
+    }
+    @Test
+    public void Sighting_instanciatesRangerAnimalId_true(){
+        Sightings testSighting=setupSighting();
+        assertEquals(1,testSighting.getAnimalid());
     }
 }
