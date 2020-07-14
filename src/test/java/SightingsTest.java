@@ -36,4 +36,10 @@ public class SightingsTest  {
         Sightings testSighting1=setupSighting();
         assertTrue(testSighting.equals(testSighting1));
     }
+    @Test
+    public void Sightings_successfullyAddsSightingsToDatabase_List(){
+        Sightings testSighting1=setupSighting();
+        testSighting1.save();
+        assertTrue(Sightings.all().get(0).equals(testSighting1));
+    }
 }
