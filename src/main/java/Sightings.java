@@ -1,3 +1,4 @@
+import java.util.Objects;
 
 public class Sightings {
     public int animalId;
@@ -18,4 +19,13 @@ public class Sightings {
 
     public int getAnimalId() { return animalId; }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Sightings sighting = (Sightings) o;
+        return animalId == sighting.animalId &&
+                Objects.equals(location, sighting.location) &&
+                Objects.equals(rangerName, sighting.rangerName);
+    }
 }

@@ -3,6 +3,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class SightingsTest  {
     public Sightings setupSighting(){ return new Sightings(1,"Riverbank","Mbaku"); }
@@ -28,5 +29,11 @@ public class SightingsTest  {
     public void Sighting_instanciatesRangerAnimalId_true(){
         Sightings testSighting=setupSighting();
         assertEquals(1,testSighting.getAnimalId());
+    }
+    @Test
+    public void Sightings_returnIfnameIsSame_true(){
+        Sightings testSighting=setupSighting();
+        Sightings testSighting1=setupSighting();
+        assertTrue(testSighting.equals(testSighting1));
     }
 }
