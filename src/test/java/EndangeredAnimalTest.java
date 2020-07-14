@@ -3,6 +3,7 @@ import org.junit.Rule;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class EndangeredAnimalTest {
     public EndangeredAnimal setupEndangeredAnimal() {
@@ -29,5 +30,17 @@ public class EndangeredAnimalTest {
     public void EndangeredAnimals_instanciatesWithHealth_true() {
         EndangeredAnimal testEndangeredAnimal = setupEndangeredAnimal();
         assertEquals("ill", testEndangeredAnimal.getHealth());
+    }
+
+    @Test
+    public void EndangeredAnimals_instanciatesWithAge_true() {
+        EndangeredAnimal testEndangeredAnimal = setupEndangeredAnimal();
+        assertEquals("old", testEndangeredAnimal.getAge());
+    }
+    @Test
+    public void EndangeredAnimals_returnIfnameIsSame_true(){
+        EndangeredAnimal testEndangeredAnimal=setupEndangeredAnimal();
+        EndangeredAnimal testEndangeredAnimal1=setupEndangeredAnimal();
+        assertTrue(testEndangeredAnimal.equals(testEndangeredAnimal1));
     }
 }

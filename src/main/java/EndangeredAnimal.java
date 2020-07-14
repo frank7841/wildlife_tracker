@@ -16,4 +16,11 @@ public class EndangeredAnimal extends Animal{
     }
 
     public String getHealth() { return health; }
+
+    public String getAge() {return age;}
+
+    public static String getDatabaseType() {
+        return DATABASE_TYPE;
+    }
+
 }
