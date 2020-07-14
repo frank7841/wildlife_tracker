@@ -35,6 +35,15 @@ public class App {
             model.put("sightings", sightings);
             return new ModelAndView(model, "sightings.hbs");
         }, new HandlebarsTemplateEngine());
+        //get animal by id
+        get("/animal-details/:id",(req, res) ->{
+            Map<String, Object> model = new HashMap<>();
+            int idOfEndangeredAnimal=Integer.parseInt(req.params("id"));
+            EndangeredAnimal foundAnimal=EndangeredAnimal.find(idOfEndangeredAnimal);
+            model.put("animals",foundAnimal);
+            model.put("sightings",Sightings.all());
+            return new ModelAndView(model, "animal-details.hbs");
+        }, new HandlebarsTemplateEngine());
 
     }
 
