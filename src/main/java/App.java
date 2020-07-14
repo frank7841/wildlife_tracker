@@ -65,6 +65,14 @@ public class App {
             model.put("animals",EndangeredAnimal.all());
             return new ModelAndView(model, "sighting-form.hbs");
         }, new HandlebarsTemplateEngine());
+        //delete animal
+        get("/animals/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfAnimalToDelete = Integer.parseInt(req.params("id"));
+            EndangeredAnimal deleteAnimal = EndangeredAnimal.find(idOfAnimalToDelete);
+            deleteAnimal.delete();
+            return new ModelAndView(model, "animals.hbs");
+        }, new HandlebarsTemplateEngine());
 
 
     }
