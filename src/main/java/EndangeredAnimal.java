@@ -49,6 +49,16 @@ public class EndangeredAnimal extends Animal {
                     .getKey();
         }
     }
+    public static EndangeredAnimal find(int id) {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "SELECT * FROM animals where id=:id";
+            EndangeredAnimal animal = con.createQuery(sql)
+                    .addParameter("id", id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetchFirst(EndangeredAnimal.class);
+            return animal;
+        }
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
