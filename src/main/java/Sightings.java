@@ -1,3 +1,5 @@
+import org.sql2o.Connection;
+
 import java.util.Objects;
 
 public class Sightings {
@@ -18,6 +20,17 @@ public class Sightings {
     public String getRangerName() { return rangerName;}
 
     public int getAnimalId() { return animalId; }
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO sightings (location, rangername, animalid) VALUES (:location, :rangername, :animalid)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("location", this.location)
+                    .addParameter("rangername", this.rangerName)
+                    .addParameter("animalid", this.animalId)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
 
     @Override
     public boolean equals(Object o) {
