@@ -20,4 +20,13 @@ public class Animal {
         Animal animal = (Animal) o;
         return Objects.equals(name, animal.name);
     }
+    public static List<EndangeredAnimal> all() {
+        String sql = "SELECT * FROM animals ";
+        try(Connection con = DB.sql2o.open()) {
+            return con.createQuery(sql)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(EndangeredAnimal.class);
+        }
+    }
+
 }
