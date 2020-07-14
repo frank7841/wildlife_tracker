@@ -23,4 +23,11 @@ public class AnimalTest {
         Animal testAnimal1=new Animal("pantha");
         assertTrue(testAnimal.equals(testAnimal1));
     }
+    @Test
+    public void save_insertsObjectIntoDatabase_Animal() {
+        Animal testAnimal = new Animal("pantha");
+        testAnimal.save();
+        assertTrue(Animal.all().get(0).equals(testAnimal));
+    }
+
 }
