@@ -2,13 +2,12 @@
 
     <h2>Add Animal</h2>
     <div id="site2">
-        <form action="/posts/animals/new" method="post" >
-            < class="form-group mx-sm-3 mb-2">
+        <form action="/posts/animals/new" method="post">
+            <div class="form-group">
                 <label for="name" class="sr-only">Animal Name</label>
                 <input type="text" class="form-control col-sm-7" id="name" name="name" placeholder="Animal Name">
-
-            <!----->
-            <div class="form-row align-items-center">
+            </div>
+            <div class="form-group">
                     <label class="sr-only" for="Health">Health</label>
                     <select class="custom-select col-sm-7" id="Health">
                         <option selected>Choose Health...</option>
@@ -18,7 +17,7 @@
                     </select>
             </div>
             <br>
-            <div class="form-row align-items-center">
+            <div class="form-group">
                 <label class="sr-only" for="Health">Health</label>
                 <select class="custom-select col-sm-7" id="Health">
                     <option selected>Choose Age...</option>
@@ -27,8 +26,10 @@
                     <option value="okay">NewBorn</option>
                 </select>
             </div>
+            <div class="form-group">
             <br><br>
-                <button type="submit" class="btn btn-secondary btn-lg btn-block col-ms-7" >Create</button>>
+                <button type="submit" class="btn btn-secondary btn-lg btn-block col-ms-7">Create</button>
+            </div>
         </form>
     </div>
 {{/partial}}
