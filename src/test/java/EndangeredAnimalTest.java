@@ -1,4 +1,5 @@
 import junit.framework.TestCase;
+import org.junit.Assert;
 import org.junit.Rule;
 import org.junit.Test;
 
@@ -54,6 +55,15 @@ public class EndangeredAnimalTest {
         EndangeredAnimal testEndangeredAnimal=setupEndangeredAnimal();
         testEndangeredAnimal.save();
         EndangeredAnimal savedEndangeredAnimal = EndangeredAnimal.all().get(0);
-        assertEquals(savedEndangeredAnimal.getId(), testEndangeredAnimal.getId());
+        Assert.assertEquals(savedEndangeredAnimal.getId(), testEndangeredAnimal.getId());
+    }
+    @Test
+    public void all_returnsAllInstancesOfEndangeredAnimal_true() {
+        EndangeredAnimal firstEndageredAnimal = setupEndangeredAnimal();
+        firstEndageredAnimal.save();
+        EndangeredAnimal secondEndangeredAnimal = setupEndangeredAnimal();
+        secondEndangeredAnimal.save();
+        assertEquals(true, EndangeredAnimal.all().get(0).equals(firstEndageredAnimal));
+        assertEquals(true, EndangeredAnimal.all().get(1).equals(secondEndangeredAnimal));
     }
 }
