@@ -5,7 +5,7 @@
         <form action="/posts/animals/new" method="post">
             <div class="form-group">
                 <label for="name">Animal Name</label>
-                <input type="text" class="form-control col-sm-5" id="name" name="name" placeholder="Animal name">
+                <input type="text" class="form-control mb-2" id="name" name="name" placeholder="Animal name">
             </div>
             <br>
             <button id="bSite" style="color:White"; type="submit" class="btn btn-outline-success">Submit</button>

@@ -13,3 +13,7 @@ font-family: "Goudy Bookletter 1911", sans-serif;
 ul {
   list-style-type: none;
 }
+ul li a{
+color: white
+text-decoration:none
+}
