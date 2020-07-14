@@ -27,6 +27,6 @@ public class SightingsTest  {
     @Test
     public void Sighting_instanciatesRangerAnimalId_true(){
         Sightings testSighting=setupSighting();
-        assertEquals(1,testSighting.getAnimalid());
+        assertEquals(1,testSighting.getAnimalId());
     }
 }
