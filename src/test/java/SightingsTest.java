@@ -19,4 +19,9 @@ public class SightingsTest  {
         Sightings testSighting=setupSighting();
         assertEquals("Riverbank",testSighting.getLocation());
     }
+    @Test
+    public void Sighting_instanciatesRangerName_true(){
+        Sightings testSighting=setupSighting();
+        assertEquals("mbaku",testSighting.getRangername());
+    }
 }
