@@ -93,6 +93,19 @@ public class App {
             model.put("animals",EndangeredAnimal.all());
             return new ModelAndView(model, "sighting-form.hbs");
         }, new HandlebarsTemplateEngine());
+        //process new sightings form
+
+        post("/posts/sightings/new",(req, res) ->{
+            Map<String, Object> model = new HashMap<>();
+            String location = req.queryParams("location");
+            String rangerName = req.queryParams("ranger_name");
+            int animalId = Integer.parseInt(req.queryParams("animal_id"));
+            Sightings sighting = new Sightings(animalId,location,rangerName);
+            sighting.save();
+            model.put("sightings",Sightings.all());
+            model.put("animals",EndangeredAnimal.all());
+            return new ModelAndView(model, "success.hbs");
+        }, new HandlebarsTemplateEngine());
     }
 
 }
