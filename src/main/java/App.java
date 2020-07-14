@@ -74,6 +74,14 @@ public class App {
             return new ModelAndView(model, "animals.hbs");
         }, new HandlebarsTemplateEngine());
 
+//get: delete an individual sighting
+        get("/sightings/:id/delete", (req, res) -> {
+            Map<String, Object> model = new HashMap<>();
+            int idOfSightingToDelete = Integer.parseInt(req.params("id"));
+            Sightings deleteSighting = Sightings.find(idOfSightingToDelete);
+            deleteSighting.delete();
+            return new ModelAndView(model, "sightings.hbs");
+        }, new HandlebarsTemplateEngine());
 
     }
 
