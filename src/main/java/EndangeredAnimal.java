@@ -49,4 +49,14 @@ public class EndangeredAnimal extends Animal {
                     .getKey();
         }
     }
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
+        EndangeredAnimal that = (EndangeredAnimal) o;
+        return Objects.equals(health, that.health) &&
+                Objects.equals(age, that.age);
+    }
+
 }
