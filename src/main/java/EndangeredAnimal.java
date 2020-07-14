@@ -59,6 +59,27 @@ public class EndangeredAnimal extends Animal {
             return animal;
         }
     }
+    public List<Object> getAnimals() {
+        List<Object> allAnimals = new ArrayList<Object>();
+
+        try(Connection con = DB.sql2o.open()) {
+            String sqlSighting = "SELECT * FROM animals WHERE animal_id=:id";
+            List<Sightings> animals = con.createQuery(sqlSighting)
+                    .addParameter("id", this.id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Sightings.class);
+            allAnimals.addAll(animals);
+
+            String sqlEndangeredAnimal = "SELECT * FROM animals WHERE animal_id=:id AND type='endangered';";
+            List<Sightings> endangeredAnimals = con.createQuery(sqlEndangeredAnimal)
+                    .addParameter("id", this.id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Sightings.class);
+            allAnimals.addAll(endangeredAnimals);
+        }
+
+        return allAnimals;
+    }
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;

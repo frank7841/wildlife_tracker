@@ -1,5 +1,6 @@
 import org.sql2o.Connection;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -15,6 +16,19 @@ public class Sightings {
         this.location = location;
         this.rangerName =rangerName;
     }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public void setRangerName(String rangerName) {
+        this.rangerName = rangerName;
+    }
+
+    public void setAnimalId(int animalId) {
+        this.animalId = animalId;
+    }
+
     public String getLocation() { return location; }
 
     public String getRangerName() { return rangerName;}
@@ -52,6 +66,28 @@ public class Sightings {
             return sighting;
         }
     }
+    public List<Object> getSightings() {
+        List<Object> allSightings = new ArrayList<Object>();
+
+        try(Connection con = DB.sql2o.open()) {
+            String sqlSighting = "SELECT * FROM sightings WHERE animal_id=:id";
+            List<Sightings> sightings = con.createQuery(sqlSighting)
+                    .addParameter("id", this.id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Sightings.class);
+            allSightings.addAll(sightings);
+
+            String sqlEndangeredAnimal = "SELECT * FROM sightings WHERE animal_id=:id AND type='endangered';";
+            List<Sightings> endangeredSightings = con.createQuery(sqlSighting)
+                    .addParameter("id", this.id)
+                    .throwOnMappingFailure(false)
+                    .executeAndFetch(Sightings.class);
+            allSightings.addAll(endangeredSightings);
+        }
+
+        return allSightings;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -62,4 +98,10 @@ public class Sightings {
                 Objects.equals(location, sighting.location) &&
                 Objects.equals(rangerName, sighting.rangerName);
     }
+    @Override
+    public int hashCode() {
+        return Objects.hash(animalId, location, rangerName);
+    }
 }
+
+
