@@ -28,6 +28,13 @@ public class App {
             model.put("sightings",Sightings.all());
             return new ModelAndView(model, "animals.hbs");
         }, new HandlebarsTemplateEngine());
+        get("/sightings", (request, response) -> {
+            Map<String, Object> model = new HashMap<>();
+            List<Sightings> sightings = Sightings.all();
+            model.put("animals", EndangeredAnimal.all());
+            model.put("sightings", sightings);
+            return new ModelAndView(model, "sightings.hbs");
+        }, new HandlebarsTemplateEngine());
 
     }
 
