@@ -28,5 +28,14 @@ public class Animal {
                     .executeAndFetch(EndangeredAnimal.class);
         }
     }
-
+    public void save() {
+        try(Connection con = DB.sql2o.open()) {
+            String sql = "INSERT INTO animals (name, type) VALUES (:name, :type)";
+            this.id = (int) con.createQuery(sql, true)
+                    .addParameter("name", this.name)
+                    .addParameter("type", this.type)
+                    .executeUpdate()
+                    .getKey();
+        }
+    }
 }
