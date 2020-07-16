@@ -30,7 +30,6 @@ No bugs
 * CSS
 * Boostrap
 * Postgresql
-* Velocity
 * Spark
 ## Support and contact details
 Comment if any issues arise
